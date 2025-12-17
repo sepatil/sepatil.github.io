@@ -1,111 +1,585 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="dist/assets/css//style.css" />
-    <title>Bootstrap w/ Vite</title>
+    <title>Personal Portfolio</title>
+
+    <!-- Bootstrap CSS -->
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary: #0d6efd;
+        --secondary: #6610f2;
+        --accent: #20c997;
+        --dark: #0b132b;
+        --light: #f8f9fa;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      .navbar {
+        background: linear-gradient(90deg, var(--dark), #1c2541);
+      }
+
+      .navbar .nav-link {
+        color: #cfd8ff !important;
+        position: relative;
+        font-weight: 500;
+      }
+
+      .navbar .nav-link.active,
+      .navbar .nav-link:hover {
+        color: var(--accent) !important;
+      }
+
+      .navbar .nav-link.active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 100%;
+        height: 2px;
+        background: var(--accent);
+      }
+
+      .hero {
+        min-height: 100vh;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: #fff;
+      }
+
+      .hero i {
+        color: var(--accent);
+      }
+
+      .section-padding {
+        padding: 90px 0;
+      }
+
+      #skills .badge {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+      }
+
+      .card {
+        border: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      #contact {
+        background: linear-gradient(135deg, var(--dark), #1c2541);
+      }
+
+      footer {
+        background: #020617;
+      }
+
+      /* Testimonial carousel arrow visibility */
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        background-color: rgba(0, 0, 0, 0.6);
+        background-size: 60% 60%;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+      }
+
+      .carousel-control-prev,
+      .carousel-control-next {
+        opacity: 1;
+      }
+
+      .carousel-control-prev:hover .carousel-control-prev-icon,
+      .carousel-control-next:hover .carousel-control-next-icon {
+        background-color: var(--accent);
+      }
+    </style>
   </head>
-  <body>
-    <div class="container py-4 px-3 mx-auto">
-      <h1>Hello, Bootstrap and Vite! how are you</h1>
-      <button class="btn btn-primary">Primary button</button>
+  <body
+    data-bs-spy="scroll"
+    data-bs-target="#navbarNav"
+    data-bs-offset="80"
+    tabindex="0"
+  >
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">MyPortfolio</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">Skills</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <!-- Hero Section -->
+    <section class="hero d-flex align-items-center">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 text-center text-lg-start">
+            <h1 class="display-4 fw-bold">Hi, I'm Sanjay</h1>
+            <p class="lead">Web Developer | WordPress Expert | UI Enthusiast</p>
+            <div class="mb-4">
+              <i class="bi bi-wordpress fs-3 me-3"></i>
+              <i class="bi bi-bootstrap fs-3 me-3"></i>
+              <i class="bi bi-code-slash fs-3 me-3"></i>
+              <i class="bi bi-github fs-3"></i>
+            </div>
+            <a href="#projects" class="btn btn-light btn-lg">View My Work</a>
+          </div>
+          <div class="col-lg-6 text-center mt-5 mt-lg-0">
+            <img
+              src="https://via.placeholder.com/500x500.png?text=Developer+Illustration"
+              alt="Hero Image"
+              class="img-fluid rounded-4 shadow"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section-padding">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h2 class="fw-bold mb-3">About Me</h2>
+            <p class="text-muted">
+              I am a professional web developer specializing in WordPress, PHP,
+              and modern frontend tools. I build fast, scalable, and
+              user-friendly websites for businesses and individuals.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="bg-light section-padding">
+      <div class="container">
+        <h2 class="fw-bold text-center mb-5">Skills & Expertise</h2>
+        <div class="row g-4 text-center">
+          <div class="col-md-3 col-sm-6">
+            <div class="p-4 bg-white rounded-4 shadow-sm h-100">
+              <i class="bi bi-filetype-html fs-1 text-primary"></i>
+              <h5 class="mt-3">HTML5</h5>
+              <p class="text-muted small">
+                Semantic, accessible, SEO-friendly markup for modern websites.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6">
+            <div class="p-4 bg-white rounded-4 shadow-sm h-100">
+              <i class="bi bi-filetype-css fs-1 text-primary"></i>
+              <h5 class="mt-3">CSS3 / Bootstrap</h5>
+              <p class="text-muted small">
+                Responsive layouts, animations, and clean UI using Bootstrap 5.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6">
+            <div class="p-4 bg-white rounded-4 shadow-sm h-100">
+              <i class="bi bi-filetype-js fs-1 text-primary"></i>
+              <h5 class="mt-3">JavaScript</h5>
+              <p class="text-muted small">
+                Interactive UI, DOM manipulation, and modern ES6+ features.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6">
+            <div class="p-4 bg-white rounded-4 shadow-sm h-100">
+              <i class="bi bi-wordpress fs-1 text-primary"></i>
+              <h5 class="mt-3">WordPress</h5>
+              <p class="text-muted small">
+                Custom themes, plugins, Gutenberg blocks, and WooCommerce.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6">
+            <div class="p-4 bg-white rounded-4 shadow-sm h-100">
+              <i class="bi bi-database fs-1 text-primary"></i>
+              <h5 class="mt-3">PHP & MySQL</h5>
+              <p class="text-muted small">
+                Backend logic, APIs, custom queries, and secure data handling.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6">
+            <div class="p-4 bg-white rounded-4 shadow-sm h-100">
+              <i class="bi bi-cart-check fs-1 text-primary"></i>
+              <h5 class="mt-3">WooCommerce</h5>
+              <p class="text-muted small">
+                E-commerce solutions, payments, performance optimization.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6">
+            <div class="p-4 bg-white rounded-4 shadow-sm h-100">
+              <i class="bi bi-git fs-1 text-primary"></i>
+              <h5 class="mt-3">Git & GitHub</h5>
+              <p class="text-muted small">
+                Version control, collaboration, and clean deployment workflows.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-6">
+            <div class="p-4 bg-white rounded-4 shadow-sm h-100">
+              <i class="bi bi-speedometer2 fs-1 text-primary"></i>
+              <h5 class="mt-3">Performance</h5>
+              <p class="text-muted small">
+                Fast loading, Core Web Vitals, caching, and optimization.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section-padding">
+      <div class="container">
+        <h2 class="fw-bold text-center mb-4">Projects</h2>
+
+        <!-- Filter Buttons -->
+        <div class="text-center mb-5">
+          <button
+            class="btn btn-outline-primary me-2 filter-btn active"
+            data-filter="all"
+          >
+            All
+          </button>
+          <button
+            class="btn btn-outline-primary me-2 filter-btn"
+            data-filter="wordpress"
+          >
+            WordPress
+          </button>
+          <button
+            class="btn btn-outline-primary me-2 filter-btn"
+            data-filter="bootstrap"
+          >
+            Bootstrap
+          </button>
+          <button
+            class="btn btn-outline-primary filter-btn"
+            data-filter="ecommerce"
+          >
+            E-commerce
+          </button>
+        </div>
+        <div class="row g-4" id="projectGrid">
+          <div class="col-md-4 project-item" data-category="bootstrap">
+            <div class="card project-card overflow-hidden">
+              <div class="position-relative">
+                <img
+                  src="https://via.placeholder.com/600x400.png?text=Portfolio+Website"
+                  class="img-fluid"
+                  alt="Project"
+                />
+                <div class="project-overlay">
+                  <button
+                    class="btn btn-light btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#projectModal"
+                    data-title="Portfolio Website"
+                    data-desc="Responsive developer portfolio built with Bootstrap 5, optimized for performance and SEO."
+                    data-tech="HTML, CSS, Bootstrap, JavaScript"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Portfolio Website</h5>
+                <p class="card-text small text-muted">
+                  Responsive developer portfolio using Bootstrap 5.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 project-item" data-category="wordpress">
+            <div class="card project-card overflow-hidden">
+              <div class="position-relative">
+                <img
+                  src="https://via.placeholder.com/600x400.png?text=WordPress+Theme"
+                  class="img-fluid"
+                  alt="Project"
+                />
+                <div class="project-overlay">
+                  <button
+                    class="btn btn-light btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#projectModal"
+                    data-title="Portfolio Website"
+                    data-desc="Responsive developer portfolio built with Bootstrap 5, optimized for performance and SEO."
+                    data-tech="HTML, CSS, Bootstrap, JavaScript"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">WordPress Business Theme</h5>
+                <p class="card-text small text-muted">
+                  Custom theme with Gutenberg & performance optimization.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 project-item" data-category="ecommerce">
+            <div class="card project-card overflow-hidden">
+              <div class="position-relative">
+                <img
+                  src="https://via.placeholder.com/600x400.png?text=WooCommerce+Store"
+                  class="img-fluid"
+                  alt="Project"
+                />
+                <div class="project-overlay">
+                  <button
+                    class="btn btn-light btn-sm"
+                    data-bs-toggle="modal"
+                    data-bs-target="#projectModal"
+                    data-title="Portfolio Website"
+                    data-desc="Responsive developer portfolio built with Bootstrap 5, optimized for performance and SEO."
+                    data-tech="HTML, CSS, Bootstrap, JavaScript"
+                  >
+                    View Details
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">WooCommerce Store</h5>
+                <p class="card-text small text-muted">
+                  E-commerce store with payment gateway integration.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content rounded-4">
+          <div class="modal-header">
+            <h5 class="modal-title" id="projectModalTitle"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p id="projectModalDesc"></p>
+            <p>
+              <strong>Technologies:</strong> <span id="projectModalTech"></span>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="accordion" id="accordionExample">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-          <button
-            class="accordion-button"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseOne"
-            aria-expanded="true"
-            aria-controls="collapseOne"
-          >
-            Accordion Item #1
-          </button>
-        </h2>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="bg-light section-padding">
+      <div class="container">
+        <h2 class="fw-bold text-center mb-5">What Clients Say</h2>
+
         <div
-          id="collapseOne"
-          class="accordion-collapse collapse show"
-          aria-labelledby="headingOne"
-          data-bs-parent="#accordionExample"
+          id="testimonialCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
         >
-          <div class="accordion-body">
-            <strong>This is the first item's accordion body.</strong> It is
-            shown by default, until the collapse plugin adds the appropriate
-            classes that we use to style each element. These classes control the
-            overall appearance, as well as the showing and hiding via CSS
-            transitions. You can modify any of this with custom CSS or
-            overriding our default variables. It's also worth noting that just
-            about any HTML can go within the <code>.accordion-body</code>,
-            though the transition does limit overflow.
+          <div class="carousel-inner">
+            <div class="carousel-item active text-center">
+              <img
+                src="https://via.placeholder.com/100"
+                class="rounded-circle mb-3"
+                alt="Client"
+              />
+              <p class="lead fst-italic">
+                “Sanjay delivered a high-quality WordPress website on time.
+                Highly professional and skilled.”
+              </p>
+              <h6 class="fw-bold">Amit Sharma</h6>
+              <small class="text-muted">Business Owner</small>
+            </div>
+
+            <div class="carousel-item text-center">
+              <img
+                src="https://via.placeholder.com/100"
+                class="rounded-circle mb-3"
+                alt="Client"
+              />
+              <p class="lead fst-italic">
+                “Excellent developer with deep WordPress knowledge.
+                Communication was smooth.”
+              </p>
+              <h6 class="fw-bold">Neha Patel</h6>
+              <small class="text-muted">Startup Founder</small>
+            </div>
+
+            <div class="carousel-item text-center">
+              <img
+                src="https://via.placeholder.com/100"
+                class="rounded-circle mb-3"
+                alt="Client"
+              />
+              <p class="lead fst-italic">
+                “Fast, reliable, and very professional. Would definitely
+                recommend.”
+              </p>
+              <h6 class="fw-bold">Rahul Verma</h6>
+              <small class="text-muted">Agency Manager</small>
+            </div>
+          </div>
+
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#testimonialCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#testimonialCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="bg-dark text-light section-padding">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center">
+            <h2 class="fw-bold mb-3">Contact Me</h2>
+            <p>Email: yourname@email.com</p>
+            <p>Phone: +91 XXXXX XXXXX</p>
           </div>
         </div>
       </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTwo">
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseTwo"
-            aria-expanded="false"
-            aria-controls="collapseTwo"
-          >
-            Accordion Item #2
-          </button>
-        </h2>
-        <div
-          id="collapseTwo"
-          class="accordion-collapse collapse"
-          aria-labelledby="headingTwo"
-          data-bs-parent="#accordionExample"
-        >
-          <div class="accordion-body">
-            <strong>This is the second item's accordion body.</strong> It is
-            hidden by default, until the collapse plugin adds the appropriate
-            classes that we use to style each element. These classes control the
-            overall appearance, as well as the showing and hiding via CSS
-            transitions. You can modify any of this with custom CSS or
-            overriding our default variables. It's also worth noting that just
-            about any HTML can go within the <code>.accordion-body</code>,
-            though the transition does limit overflow.
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingThree">
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseThree"
-            aria-expanded="false"
-            aria-controls="collapseThree"
-          >
-            Accordion Item #3
-          </button>
-        </h2>
-        <div
-          id="collapseThree"
-          class="accordion-collapse collapse"
-          aria-labelledby="headingThree"
-          data-bs-parent="#accordionExample"
-        >
-          <div class="accordion-body">
-            <strong>This is the third item's accordion body.</strong> It is
-            hidden by default, until the collapse plugin adds the appropriate
-            classes that we use to style each element. These classes control the
-            overall appearance, as well as the showing and hiding via CSS
-            transitions. You can modify any of this with custom CSS or
-            overriding our default variables. It's also worth noting that just
-            about any HTML can go within the <code>.accordion-body</code>,
-            though the transition does limit overflow.
-          </div>
-        </div>
-      </div>
-    </div>
-    <script type="module" src="dist/assets/js/theme.js"></script>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-center text-light py-3">
+      <p class="mb-0">© 2025 Your Name. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Activate Bootstrap ScrollSpy
+        new bootstrap.ScrollSpy(document.body, {
+          target: "#navbarNav",
+          offset: 80,
+        });
+
+        // AJAX-like Project Filtering with Smooth Transition
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const projectItems = document.querySelectorAll(
+          "#projectGrid .project-item"
+        );
+
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            filterButtons.forEach((btn) => btn.classList.remove("active"));
+            button.classList.add("active");
+
+            const filterValue = button.dataset.filter;
+
+            projectItems.forEach((item) => {
+              const category = item.dataset.category;
+              item.classList.add("fade-out");
+
+              setTimeout(() => {
+                if (filterValue === "all" || category === filterValue) {
+                  item.style.display = "block";
+                  item.classList.remove("fade-out");
+                  item.classList.add("fade-in");
+                } else {
+                  item.style.display = "none";
+                }
+              }, 200);
+            });
+          });
+        });
+
+        // Project Modal Dynamic Content
+        const projectModal = document.getElementById("projectModal");
+        projectModal.addEventListener("show.bs.modal", (event) => {
+          const button = event.relatedTarget;
+          document.getElementById("projectModalTitle").textContent =
+            button.getAttribute("data-title");
+          document.getElementById("projectModalDesc").textContent =
+            button.getAttribute("data-desc");
+          document.getElementById("projectModalTech").textContent =
+            button.getAttribute("data-tech");
+        });
+      });
+    </script>
   </body>
 </html>
